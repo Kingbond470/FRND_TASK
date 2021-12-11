@@ -3,7 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android/FRND_TASK/FRND/app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="..\:/Android/FRND_TASK/FRND/app/src/main/res/layout/activity_main.xml" value="0.19074074074074074" />
+        <entry key="..\:/Android/FRND_TASK/FRND/app/src/main/res/layout/nav_header.xml" value="0.1" />
+        <entry key="..\:/Android/FRND_TASK/FRND/app/src/main/res/layout/navheader.xml" value="0.1" />
+        <entry key="..\:/Android/FRND_TASK/FRND/app/src/main/res/menu/nav_menu.xml" value="0.1" />
       </map>
     </option>
   </component>
