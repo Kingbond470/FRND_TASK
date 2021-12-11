@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FRND">
         <activity
+            android:name=".ui.NewTaskActivity"
+            android:theme="@style/Theme.Task"
+            android:exported="true" />
+        <activity
             android:name=".ui.CreateTaskActivity"
             android:exported="true" />
         <activity
@@ -23,7 +27,7 @@
         </activity>
         <activity
             android:name=".ui.ShowTaskActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="preloaded_fonts"

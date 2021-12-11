@@ -1,5 +1,6 @@
 package dev.kingbond.frnd.ui
 
+import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -31,6 +32,12 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
         selectedDate = LocalDate.now()
         Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
         setMonthView()
+
+        binding.addTaskToGoal.setOnClickListener {
+            val intent = Intent(this, NewTaskActivity::class.java)
+            intent.putExtra("currentDate", selectedDate.toString())
+            startActivity(intent)
+        }
     }
 
     private fun setMonthView() {
