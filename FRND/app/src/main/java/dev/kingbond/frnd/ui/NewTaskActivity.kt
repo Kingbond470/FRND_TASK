@@ -5,11 +5,13 @@ import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import dagger.hilt.android.AndroidEntryPoint
 import dev.kingbond.frnd.R
 import dev.kingbond.frnd.databinding.ActivityNewTaskBinding
 import java.text.SimpleDateFormat
 import java.util.*
 
+@AndroidEntryPoint
 class NewTaskActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityNewTaskBinding

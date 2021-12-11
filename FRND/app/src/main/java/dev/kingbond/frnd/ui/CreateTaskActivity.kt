@@ -10,12 +10,14 @@ import androidx.annotation.RequiresApi
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import dev.kingbond.frnd.R
 import dev.kingbond.frnd.databinding.ActivityCreateTaskBinding
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
 
+@AndroidEntryPoint
 @RequiresApi(Build.VERSION_CODES.O)
 class CreateTaskActivity : AppCompatActivity(), DateClickListener {
 

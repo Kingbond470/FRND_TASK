@@ -11,9 +11,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
+import dagger.hilt.android.AndroidEntryPoint
 import dev.kingbond.frnd.R
 import dev.kingbond.frnd.databinding.ActivityHomeBinding
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var homeBinding: ActivityHomeBinding
