@@ -36,10 +36,19 @@ class HomeActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        // On click of navigation item - menu drawer
+        // Menu drawer
+        onClickOfDrawer()
+    }
+
+    // On click of navigation item open Menu drawer
+    private fun onClickOfDrawer() {
         homeBinding.navView.setNavigationItemSelectedListener(NavigationView.OnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.nav_task -> {
+                    val intent =
+                    Intent(this@HomeActivity, CreateTaskActivity::class.java)
+                    startActivity(intent)
+                    homeBinding.drawerLayout.closeDrawer(GravityCompat.START)
                     showNotifications("Create Task")
                 }
 
@@ -65,12 +74,12 @@ class HomeActivity : AppCompatActivity() {
             }
             true
         })
+
     }
 
-    // Any Item selected : return true
+    // Any Menu Item selected : return true
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (toggle.onOptionsItemSelected(item)) return true
-
         return super.onOptionsItemSelected(item)
     }
 
@@ -78,4 +87,5 @@ class HomeActivity : AppCompatActivity() {
     private fun showNotifications(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
 }
