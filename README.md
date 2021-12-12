@@ -2,7 +2,7 @@
 
 This is a repository that contains Android assignment of FRND. 
 
-### ![Download APK](https://drive.google.com/file/d/1liePIsw12xTvlD0kye_7-xDXKls1yZl8/view?usp=sharing) 
+[Download APK](https://drive.google.com/file/d/1liePIsw12xTvlD0kye_7-xDXKls1yZl8/view?usp=sharing) 
 
 ## Getting the sample code
 
