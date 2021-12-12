@@ -4,6 +4,8 @@ This is a repository that contains Android assignment of FRND.
 
 [Download APK](https://drive.google.com/file/d/1liePIsw12xTvlD0kye_7-xDXKls1yZl8/view?usp=sharing) 
 
+[Watch Demo](https://drive.google.com/file/d/1jwOHAo5hDOryzZTwESHj41s3KjZS_aIc/view?usp=sharing)
+
 ## Getting the sample code
 
 Get the latest sample code from GitHub using Git or download the repository as a ZIP file. 
