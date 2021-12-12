@@ -47,7 +47,7 @@ class CalendarAdapter(
     inner class CalendarViewHolder(
         private val view: View,
         private val clickListener: DateClickListener,
-        private val lifecycleOwner: LifecycleOwner
+        private val lifecycleOwner: LifecycleOwner,
     ) : RecyclerView.ViewHolder(view) {
 
         internal fun setData(date: String) {

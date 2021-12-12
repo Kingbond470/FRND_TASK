@@ -25,6 +25,7 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
     private lateinit var binding: ActivityCreateTaskBinding
     private lateinit var daysInMonth: ArrayList<String>
     private lateinit var calendarAdapter: CalendarAdapter
+    private var curDate: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +33,14 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
         setContentView(binding.root)
 
         selectedDate = LocalDate.now()
+        curDate = selectedDate.toString()
         Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
         setMonthView()
 
         binding.addTaskToGoal.setOnClickListener {
             val intent = Intent(this, NewTaskActivity::class.java)
             intent.putExtra("currentDate", selectedDate.toString())
+            intent.putExtra("curDate", curDate)
             startActivity(intent)
         }
     }
@@ -98,7 +101,8 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
     }
 
     override fun onDateClicked(date: String, position: Int, today: String) {
-
+        curDate = today
+        Toast.makeText(this, today, Toast.LENGTH_SHORT).show()
     }
 
 }
