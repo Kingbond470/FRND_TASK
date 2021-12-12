@@ -1,6 +1,8 @@
 # FRND - Assignment
 
-This is a repository that contains Android assignment of FRND.
+This is a repository that contains Android assignment of FRND. 
+
+### ![Download APK](https://github.com/Kingbond470/Android-Practice/blob/main/FRND%20IMAGE/app-debug.apk) 
 
 ## Getting the sample code
 
