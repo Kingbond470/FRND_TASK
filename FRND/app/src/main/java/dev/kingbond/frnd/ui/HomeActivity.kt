@@ -14,6 +14,7 @@ import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import dev.kingbond.frnd.R
 import dev.kingbond.frnd.databinding.ActivityHomeBinding
+import dev.kingbond.frnd.utils.Constants.showNotifications
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
@@ -63,15 +64,15 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.nav_about -> {
-                    showNotifications("About")
+                    showNotifications(this,"About")
                 }
 
                 R.id.nav_settings -> {
-                    showNotifications("Settings")
+                    showNotifications(this,"Settings")
                 }
 
                 R.id.nav_help -> {
-                    showNotifications("Help")
+                    showNotifications(this,"Help")
                 }
             }
             true
@@ -85,9 +86,6 @@ class HomeActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    // to show the toast notifications
-    private fun showNotifications(message: String) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-    }
+
 
 }

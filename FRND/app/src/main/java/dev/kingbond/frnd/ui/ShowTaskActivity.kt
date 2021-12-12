@@ -6,7 +6,6 @@ import androidx.activity.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import dev.kingbond.frnd.R
 import dev.kingbond.frnd.data.local.TaskDatabaseModel
 import dev.kingbond.frnd.data.remote.request.DeleteTaskRequest
 import dev.kingbond.frnd.data.remote.request.TaskGetRequest
@@ -14,6 +13,7 @@ import dev.kingbond.frnd.databinding.ActivityMainBinding
 import dev.kingbond.frnd.ui.recyclerview.ClickListener
 import dev.kingbond.frnd.ui.recyclerview.TaskAdapter
 import dev.kingbond.frnd.utils.Constants
+import dev.kingbond.frnd.utils.Constants.showNotifications
 import dev.kingbond.frnd.viewmodel.TaskViewModel
 
 @AndroidEntryPoint
@@ -31,18 +31,23 @@ class ShowTaskActivity : AppCompatActivity(), ClickListener {
         setContentView(binding.root)
 
 
+        if (!Constants.checkForInternet(this)) {
 
-        setRecycler()
+            viewModel.getTaskfromRepo().observe(this, Observer {
+                list.clear()
+                list.addAll(it)
+                adapter.notifyDataSetChanged()
+            })
+            setRecyclerView()
+
+        } else {
+            setRecycler()
+        }
     }
 
     private fun setRecycler() {
-        adapter = TaskAdapter(list, this)
-        val linearLayoutManager = LinearLayoutManager(this)
-        binding.apply {
-            recyclerView.adapter = adapter
-            recyclerView.layoutManager = linearLayoutManager
-        }
 
+        setRecyclerView()
         viewModel.deleteFromDb()
         val taskGetRequest = TaskGetRequest(Constants.USER_ID)
         viewModel.saveDataToDB(taskGetRequest)
@@ -53,10 +58,25 @@ class ShowTaskActivity : AppCompatActivity(), ClickListener {
         })
     }
 
-    override fun onClick(databaseModel: TaskDatabaseModel, position: Int) {
-        viewModel.deleteFromApi(DeleteTaskRequest(databaseModel.task_id, Constants.USER_ID))
-        viewModel.deleteTask(databaseModel)
-
-        adapter.notifyDataSetChanged()
+    private fun setRecyclerView() {
+        adapter = TaskAdapter(list, this)
+        val linearLayoutManager = LinearLayoutManager(this)
+        binding.apply {
+            recyclerView.adapter = adapter
+            recyclerView.layoutManager = linearLayoutManager
+        }
     }
+
+    override fun onClick(databaseModel: TaskDatabaseModel, position: Int) {
+        if (Constants.checkForInternet(this)) {
+            viewModel.deleteFromApi(DeleteTaskRequest(databaseModel.task_id, Constants.USER_ID))
+            viewModel.deleteTask(databaseModel)
+            adapter.notifyDataSetChanged()
+        } else {
+            showNotifications(this, "Please turn on Internet")
+        }
+
+    }
+
+
 }
