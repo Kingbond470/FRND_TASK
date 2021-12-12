@@ -48,10 +48,10 @@ class HomeActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_task -> {
                     val intent =
-                    Intent(this@HomeActivity, CreateTaskActivity::class.java)
+                        Intent(this@HomeActivity, CreateTaskActivity::class.java)
                     startActivity(intent)
                     homeBinding.drawerLayout.closeDrawer(GravityCompat.START)
-                    showNotifications("Create Task")
+                    // showNotifications("Create Task")
                 }
 
                 R.id.nav_completed -> {
@@ -59,7 +59,7 @@ class HomeActivity : AppCompatActivity() {
                         Intent(this@HomeActivity, ShowTaskActivity::class.java)
                     startActivity(intent)
                     homeBinding.drawerLayout.closeDrawer(GravityCompat.START)
-                    showNotifications("Show Task - List")
+                    //  showNotifications("Show Task - List")
                 }
 
                 R.id.nav_about -> {

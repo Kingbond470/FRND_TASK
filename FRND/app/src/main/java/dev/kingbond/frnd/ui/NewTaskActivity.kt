@@ -33,8 +33,8 @@ class NewTaskActivity : AppCompatActivity() {
 
 
         binding.addToDateTask.text = intent.getStringExtra("curDate")
-        Toast.makeText(this, intent.getStringExtra("curDate")+"end", Toast.LENGTH_SHORT).show()
-       // setDate()
+        // Toast.makeText(this, intent.getStringExtra("curDate")+"end", Toast.LENGTH_SHORT).show()
+        // setDate()
         setTime()
 
         binding.ibProfileBackNewTask.setOnClickListener {

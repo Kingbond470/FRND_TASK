@@ -21,7 +21,7 @@ class TaskRepository @Inject constructor(val taskDao: TaskDao) {
     private val api = TaskModule.getInstance().create(ApiServices::class.java)
     var responseHandler = ResponseHandler()
 
-    fun savetoDB(createNewTaskRequest: TaskGetRequest){
+    fun savetoDB(createNewTaskRequest: TaskGetRequest) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = api.getTaskFromAPI(TaskGetRequest(1002))
             saveToDatabase(response.tasks)
@@ -31,31 +31,42 @@ class TaskRepository @Inject constructor(val taskDao: TaskDao) {
     private fun saveToDatabase(response: List<dev.kingbond.frnd.data.remote.Task>) {
         var list = ArrayList<TaskDatabaseModel>()
         response.forEach {
-            val data = TaskDatabaseModel(it.taskDetail.date,it.taskDetail.description,it.taskDetail.title,it.taskId)
+            val data = TaskDatabaseModel(
+                it.taskDetail.date,
+                it.taskDetail.description,
+                it.taskDetail.title,
+                it.taskId
+            )
             list.add(data)
         }
         taskDao.insertTaskFromAPI(list)
     }
 
-    fun getAllTasks():LiveData<List<TaskDatabaseModel>>{
+    fun getAllTasks(): LiveData<List<TaskDatabaseModel>> {
         return taskDao.getTask()
     }
 
-    fun postTaskToApi(createNewTaskRequest: CreateNewTaskRequest){
+    fun postTaskToApi(createNewTaskRequest: CreateNewTaskRequest) {
         CoroutineScope(Dispatchers.IO).launch {
             api.createNewTaskToAPI(createNewTaskRequest)
         }
     }
 
-    fun deleteFromApi(deleteTaskRequest: DeleteTaskRequest){
+    fun deleteFromApi(deleteTaskRequest: DeleteTaskRequest) {
         CoroutineScope(Dispatchers.IO).launch {
             api.deleteTaskFromAPI(deleteTaskRequest)
         }
     }
 
-    fun deletAll(){
+    fun deletAll() {
         CoroutineScope(Dispatchers.IO).launch {
             taskDao.deleteAllDB()
+        }
+    }
+
+    fun deleteTask(taskDatabaseModel: TaskDatabaseModel) {
+        CoroutineScope(Dispatchers.IO).launch {
+            taskDao.deleteTask(taskDatabaseModel)
         }
     }
 }

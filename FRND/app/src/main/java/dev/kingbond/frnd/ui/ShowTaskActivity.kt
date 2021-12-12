@@ -54,7 +54,9 @@ class ShowTaskActivity : AppCompatActivity(), ClickListener {
     }
 
     override fun onClick(databaseModel: TaskDatabaseModel, position: Int) {
-        viewModel.deleteFromApi(DeleteTaskRequest(databaseModel.task_id,Constants.USER_ID))
-        setRecycler()
+        viewModel.deleteFromApi(DeleteTaskRequest(databaseModel.task_id, Constants.USER_ID))
+        viewModel.deleteTask(databaseModel)
+
+        adapter.notifyDataSetChanged()
     }
 }

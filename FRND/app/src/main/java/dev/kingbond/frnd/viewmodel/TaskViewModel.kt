@@ -12,25 +12,29 @@ import javax.inject.Inject
 
 
 @HiltViewModel
-class TaskViewModel @Inject constructor(val repo :TaskRepository) :ViewModel(){
+class TaskViewModel @Inject constructor(val repo: TaskRepository) : ViewModel() {
 
-    fun getTaskfromRepo():LiveData<List<TaskDatabaseModel>>{
+    fun getTaskfromRepo(): LiveData<List<TaskDatabaseModel>> {
         return repo.getAllTasks()
     }
 
-    fun saveDataToDB(taskGetRequest: TaskGetRequest){
+    fun saveDataToDB(taskGetRequest: TaskGetRequest) {
         repo.savetoDB(taskGetRequest)
     }
 
-    fun postToApi(createNewTaskRequest: CreateNewTaskRequest){
+    fun postToApi(createNewTaskRequest: CreateNewTaskRequest) {
         repo.postTaskToApi(createNewTaskRequest)
     }
 
-    fun deleteFromApi(deleteTaskRequest: DeleteTaskRequest){
+    fun deleteFromApi(deleteTaskRequest: DeleteTaskRequest) {
         repo.deleteFromApi(deleteTaskRequest)
     }
 
-    fun deleteFromDb(){
+    fun deleteFromDb() {
         repo.deletAll()
+    }
+
+    fun deleteTask(taskDatabaseModel: TaskDatabaseModel) {
+        repo.deleteTask(taskDatabaseModel)
     }
 }

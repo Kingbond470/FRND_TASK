@@ -56,7 +56,7 @@ class CalendarAdapter(
                 cellDayText.text = date
 
                 //yyyy-MM-dd
-                var today = currentDate.substring(0, currentDate.length-2)
+                var today = currentDate.substring(0, currentDate.length - 2)
                 today += date
 
 

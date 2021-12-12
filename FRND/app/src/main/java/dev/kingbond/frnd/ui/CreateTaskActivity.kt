@@ -34,7 +34,7 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
 
         selectedDate = LocalDate.now()
         curDate = selectedDate.toString()
-        Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, selectedDate.toString(), Toast.LENGTH_SHORT).show()
         setMonthView()
 
         binding.addTaskToGoal.setOnClickListener {
@@ -102,7 +102,7 @@ class CreateTaskActivity : AppCompatActivity(), DateClickListener {
 
     override fun onDateClicked(date: String, position: Int, today: String) {
         curDate = today
-        Toast.makeText(this, today, Toast.LENGTH_SHORT).show()
+        //  Toast.makeText(this, today, Toast.LENGTH_SHORT).show()
     }
 
 }
